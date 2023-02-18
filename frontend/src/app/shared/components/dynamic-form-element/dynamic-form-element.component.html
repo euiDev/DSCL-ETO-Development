@@ -1,0 +1,9 @@
+<ng-container [ngSwitch]="element.element" [formGroup]="formGroup">
+  <input
+    *ngSwitchCase="'input'"
+    [type]="element.type"
+    [id]="element.key"
+    [placeholder]="element.placeholder"
+    [formControlName]="element.key"
+  />
+</ng-container>

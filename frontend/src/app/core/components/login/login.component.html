@@ -1,0 +1,9 @@
+<app-dynamic-form
+  [dynamicFormFields]="loginFormFields"
+  (submitEvent)="goLogin($event)"
+  (dynamicFormCreatedEvent)="loginFormGroup = $event"
+>
+  <ng-template #buttonGroup>
+    <button type="submit" [disabled]="loginFormGroup.invalid">Login</button>
+  </ng-template>
+</app-dynamic-form>
