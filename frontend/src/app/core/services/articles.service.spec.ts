@@ -1,19 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { AuthenticationGuard } from './authentication.guard';
+import { ArticlesService } from './articles.service';
 
-describe('AuthenticationGuard', () => {
-  let guard: AuthenticationGuard;
+describe('ArticlesService', () => {
+  let service: ArticlesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
     });
-    guard = TestBed.inject(AuthenticationGuard);
+    service = TestBed.inject(ArticlesService);
   });
 
   it('should be created', () => {
-    expect(guard).toBeTruthy();
+    expect(service).toBeTruthy();
   });
 });

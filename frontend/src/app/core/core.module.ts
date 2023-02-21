@@ -10,16 +10,24 @@ import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [PageNotFoundComponent, LoginComponent],
+  declarations: [PageNotFoundComponent, LoginComponent, HeaderComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,
     SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
   ],
+  exports: [HeaderComponent],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

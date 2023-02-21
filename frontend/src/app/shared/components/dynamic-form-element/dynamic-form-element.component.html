@@ -1,9 +1,31 @@
 <ng-container [ngSwitch]="element.element" [formGroup]="formGroup">
-  <input
-    *ngSwitchCase="'input'"
-    [type]="element.type"
-    [id]="element.key"
-    [placeholder]="element.placeholder"
-    [formControlName]="element.key"
-  />
+  <mat-form-field *ngSwitchCase="'input'" class="input">
+    <mat-label>{{ element.placeholder }}</mat-label>
+    <input
+      matInput
+      [id]="element.key"
+      [type]="element.type"
+      [formControlName]="element.key"
+    />
+  </mat-form-field>
+  <mat-form-field *ngSwitchCase="'textarea'" class="textarea">
+    <mat-label>{{ element.placeholder }}</mat-label>
+    <textarea
+      matInput
+      [id]="element.key"
+      [type]="element.type"
+      [formControlName]="element.key"
+      rows="8"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field
+    appearance="fill"
+    *ngSwitchCase="'datepicker'"
+    class="datepicker"
+  >
+    <mat-label>{{ element.placeholder }}</mat-label>
+    <input matInput [matDatepicker]="picker" [formControlName]="element.key" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 </ng-container>

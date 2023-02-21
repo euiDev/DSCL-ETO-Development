@@ -1,10 +1,7 @@
-interface UserLocalStorageInterface {
+interface UserInterface {
+  id: string;
   username: string;
   email: string;
-}
-
-interface UserInterface extends UserLocalStorageInterface {
-  id: string;
 }
 
 class User implements UserInterface {
@@ -15,4 +12,4 @@ class User implements UserInterface {
   ) {}
 }
 
-export { UserLocalStorageInterface, UserInterface, User };
+export { UserInterface, User };

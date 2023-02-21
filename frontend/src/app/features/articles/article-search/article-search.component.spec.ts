@@ -3,33 +3,29 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DynamicFormElementComponent } from 'src/app/shared/components/dynamic-form-element/dynamic-form-element.component';
-import { DynamicFormComponent } from 'src/app/shared/components/dynamic-form/dynamic-form.component';
 
-import { LoginComponent } from './login.component';
+import { ArticleSearchComponent } from './article-search.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('ArticleSearchComponent', () => {
+  let component: ArticleSearchComponent;
+  let fixture: ComponentFixture<ArticleSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        LoginComponent,
-        DynamicFormComponent,
-        DynamicFormElementComponent,
-      ],
+      declarations: [ArticleSearchComponent],
       imports: [
         HttpClientModule,
-        ReactiveFormsModule,
         MatFormFieldModule,
+        MatSelectModule,
         MatInputModule,
+        ReactiveFormsModule,
         BrowserAnimationsModule,
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(ArticleSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

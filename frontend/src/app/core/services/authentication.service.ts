@@ -5,6 +5,8 @@ import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { SessionService } from './session.service';
+import { handleHTTPErrors } from '../utils/http-handler';
+import { ArticlesService } from './articles.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,8 @@ export class AuthenticationService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private articlesService: ArticlesService
   ) {}
 
   login(
@@ -27,7 +30,7 @@ export class AuthenticationService {
         email,
       })
       .pipe(
-        catchError(this.handleHTTPErrors),
+        catchError(handleHTTPErrors),
         switchMap((user) =>
           this.sessionService
             .setUserSession(user)
@@ -38,21 +41,11 @@ export class AuthenticationService {
 
   logout(): void {
     this.sessionService.unsetUserSession();
+    this.articlesService.unsetAllArticles();
     this.router.navigate(['/login']);
   }
 
   isAuthenticated(): Observable<boolean> {
     return this.sessionService.getUserSession().pipe(map((user) => !!user));
-  }
-
-  private handleHTTPErrors(
-    errorResponse: HttpErrorResponse
-  ): Observable<never> {
-    let errorMessage = 'An unknown error occurred!';
-    if (!errorResponse.error || !errorResponse.error.message) {
-      return throwError(errorMessage);
-    }
-    errorMessage = errorResponse.error.message ?? errorMessage;
-    return throwError(errorMessage);
   }
 }

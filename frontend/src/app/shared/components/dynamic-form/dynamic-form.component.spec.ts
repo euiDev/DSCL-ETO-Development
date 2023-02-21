@@ -1,4 +1,6 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DynamicFormComponent } from './dynamic-form.component';
 
@@ -8,9 +10,10 @@ describe('DynamicFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicFormComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule],
+      declarations: [DynamicFormComponent],
+      providers: [{ provide: ChangeDetectorRef }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DynamicFormComponent);
     component = fixture.componentInstance;

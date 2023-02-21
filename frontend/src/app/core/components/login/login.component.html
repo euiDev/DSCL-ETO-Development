@@ -4,6 +4,13 @@
   (dynamicFormCreatedEvent)="loginFormGroup = $event"
 >
   <ng-template #buttonGroup>
-    <button type="submit" [disabled]="loginFormGroup.invalid">Login</button>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="loginFormGroup.invalid"
+    >
+      Login
+    </button>
   </ng-template>
 </app-dynamic-form>

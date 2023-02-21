@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ContentChild,
   EventEmitter,
@@ -28,6 +29,12 @@ export class DynamicFormComponent implements OnInit {
 
   dynamicFormGroup: FormGroup = new FormGroup({});
 
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
+  }
+
   ngOnInit(): void {
     this.dynamicFormFields.forEach((element) => {
       this.dynamicFormGroup.addControl(
@@ -38,7 +45,6 @@ export class DynamicFormComponent implements OnInit {
         )
       );
     });
-
     this.dynamicFormCreatedEvent.emit(this.dynamicFormGroup);
   }
 

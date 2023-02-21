@@ -28,6 +28,7 @@ const routes: Routes = [
         (m) => m.ArticlesModule
       ),
     canActivate: [AuthenticationGuard],
+    canActivateChild: [AuthenticationGuard],
     data: {
       preload: true,
     },

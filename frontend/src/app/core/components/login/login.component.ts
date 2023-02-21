@@ -10,22 +10,11 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class LoginComponent implements OnInit {
   loginFormFields: DynamicField[] = [
-    {
-      key: 'email',
-      element: 'input',
-      type: 'email',
-      value: '',
-      placeholder: 'Email',
-      validators: ['required', 'email'],
-    },
-    {
-      key: 'username',
-      element: 'input',
-      type: 'text',
-      value: '',
-      placeholder: 'Username',
-      validators: ['required'],
-    },
+    new DynamicField('email', 'input', 'email', '', 'Email', [
+      'required',
+      'email',
+    ]),
+    new DynamicField('username', 'input', 'text', '', 'Username', ['required']),
   ];
 
   loginFormGroup!: FormGroup;

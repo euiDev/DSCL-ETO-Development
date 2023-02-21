@@ -2,6 +2,24 @@
   display: block;
   padding: 5rem 0;
 
+  .form {
+    width: 80vw;
+    margin: 0 auto;
+    position: relative;
+
+    .search {
+      &__term {
+        width: 80%;
+      }
+
+      &__property {
+        width: 18%;
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+
   .card {
     width: 80vw;
     margin: 0 auto;

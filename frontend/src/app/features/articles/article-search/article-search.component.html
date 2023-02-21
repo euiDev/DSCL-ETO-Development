@@ -1,0 +1,34 @@
+<form [formGroup]="searchForm" class="form">
+  <mat-form-field class="example-full-width" class="search__term">
+    <mat-label>Search Articles</mat-label>
+    <input
+      matInput
+      placeholder="Search using ID, User ID or Title"
+      formControlName="term"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="search__property">
+    <mat-label>Search with</mat-label>
+    <mat-select formControlName="property">
+      <mat-option
+        *ngFor="let property of ['id', 'userId', 'title']"
+        [value]="property"
+      >
+        {{ property }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<ng-container *ngIf="filteredArticles$ | async as articles">
+  <mat-card
+    *ngFor="let article of articles"
+    [routerLink]="['/articles/edit', article.id]"
+    class="card cursor-pointer"
+  >
+    <mat-card-header class="mat-h2"
+      >{{ article.title }}
+      <div class="mat-h3">{{ article.date | date : "yyyy-MM-dd" }}</div>
+    </mat-card-header>
+    <mat-card-content class="mat-h4">{{ article.body }}</mat-card-content>
+  </mat-card>
+</ng-container>

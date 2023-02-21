@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span [routerLink]="['/articles']" class="cursor-pointer">ARTicles</span>
+    <mat-icon [routerLink]="['/articles/add']" class="icon-mat cursor-pointer"
+      >library_add</mat-icon
+    >
+    <mat-icon
+      [routerLink]="['/articles/search']"
+      class="icon-mat cursor-pointer"
+      >manage_search</mat-icon
+    >
+    <span class="spacer-mat"></span>
+    <mat-icon
+      *ngIf="isAuthenticated | async"
+      (click)="logout()"
+      class="icon-mat cursor-pointer"
+      >logout</mat-icon
+    >
+  </mat-toolbar-row>
+</mat-toolbar>

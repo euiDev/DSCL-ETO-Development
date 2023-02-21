@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Article } from '../models/articles.model';
 import { User } from '../models/user.model';
+import {
+  getLocalStorageData,
+  setLocalStorageData,
+} from '../utils/local-storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
-  private userBehaviorSubject = new BehaviorSubject<User | null>(
-    this.getUserData()
-  );
+  private userBehaviorSubject = new BehaviorSubject<User | null>(null);
 
-  getUserData(): User | null {
-    if (!localStorage.getItem('userData')) {
-      return null;
-    }
-
-    return JSON.parse(localStorage.getItem('userData') as string);
+  constructor() {
+    this.userBehaviorSubject.next(getLocalStorageData<User>('userData'));
   }
 
   getUserSession(): Observable<User | null> {
@@ -26,7 +25,7 @@ export class SessionService {
     const { id, username, email } = user;
     const newUser = new User(id, username, email);
     this.userBehaviorSubject.next(newUser);
-    localStorage.setItem('userData', JSON.stringify({ username, email }));
+    setLocalStorageData('userData', { id, username, email });
     return this.getUserSession();
   }
 
