@@ -1,0 +1,8 @@
+<form [formGroup]="dynamicFormGroup" (ngSubmit)="onSubmit()" class="form">
+  <app-dynamic-form-element
+    *ngFor="let dynamicFormField of dynamicFormFields"
+    [element]="dynamicFormField"
+    [formGroup]="dynamicFormGroup"
+  ></app-dynamic-form-element>
+  <ng-container [ngTemplateOutlet]="buttonGroup"></ng-container>
+</form>

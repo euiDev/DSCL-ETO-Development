@@ -1,0 +1,17 @@
+<app-dynamic-form
+  [dynamicFormFields]="articleSaveFormFields"
+  (submitEvent)="goSaveArticle($event)"
+  (dynamicFormCreatedEvent)="articleSaveFormGroup = $event"
+  *ngIf="article$ | async"
+>
+  <ng-template #buttonGroup>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="articleSaveFormGroup.invalid"
+    >
+      Publish
+    </button>
+  </ng-template>
+</app-dynamic-form>
