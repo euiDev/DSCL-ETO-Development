@@ -17,6 +17,36 @@
         position: absolute;
         right: 0;
       }
+
+      @media screen and (max-width: 850px) {
+        &__term {
+          width: 75%;
+        }
+
+        &__property {
+          width: 23%;
+        }
+      }
+
+      @media screen and (max-width: 650px) {
+        &__term {
+          width: 70%;
+        }
+
+        &__property {
+          width: 28%;
+        }
+      }
+
+      @media screen and (max-width: 550px) {
+        &__term {
+          width: 65%;
+        }
+
+        &__property {
+          width: 33%;
+        }
+      }
     }
   }
 
